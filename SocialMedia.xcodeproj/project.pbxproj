@@ -17,6 +17,7 @@
 		DCB8F7251E9D41D100AC0534 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCB8F7241E9D41D100AC0534 /* Assets.xcassets */; };
 		DCB8F7281E9D41D100AC0534 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCB8F7261E9D41D100AC0534 /* LaunchScreen.storyboard */; };
 		DCB8F7301E9D42D900AC0534 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCB8F72F1E9D42D900AC0534 /* GoogleService-Info.plist */; };
+		DCDCCBAE1EA16F5600D07AF8 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDCCBAD1EA16F5600D07AF8 /* FeedVC.swift */; };
 		F3E6C42F68C797388F1A62C1 /* Pods_SocialMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D4F4D3BD9ED7F4832E16BD1 /* Pods_SocialMedia.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		DCB8F7271E9D41D100AC0534 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DCB8F7291E9D41D100AC0534 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DCB8F72F1E9D42D900AC0534 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DCDCCBAD1EA16F5600D07AF8 /* FeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				DCB8F71F1E9D41D100AC0534 /* SignInVC.swift */,
+				DCDCCBAD1EA16F5600D07AF8 /* FeedVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCB6064D1E9E44F80041B60A /* FancyField.swift in Sources */,
+				DCDCCBAE1EA16F5600D07AF8 /* FeedVC.swift in Sources */,
 				DCB8F7201E9D41D100AC0534 /* SignInVC.swift in Sources */,
 				DCB6064B1E9E43110041B60A /* RoundBtn.swift in Sources */,
 				DCB8F71E1E9D41D100AC0534 /* AppDelegate.swift in Sources */,

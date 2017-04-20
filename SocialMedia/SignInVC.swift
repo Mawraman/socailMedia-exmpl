@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FBSDKCoreKit
 import FBSDKLoginKit
+import SwiftKeychainWrapper
 
 class SignInVC: UIViewController {
 
@@ -18,12 +19,12 @@ class SignInVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID){
+            performSegue(withIdentifier: "goToFeed", sender: nil)
+        }
     }
 
 
@@ -53,10 +54,16 @@ class SignInVC: UIViewController {
                             print("OZZY: Unable to authenticate via Firebase email - \(error.debugDescription)")
                         }else{
                             print("OZZY: Successfully created authenticated user via Firebase email")
+                            if let user = user {
+                                self.complateSignIn(id: user.uid)
+                            }
                         }
                     })
                 }else{
                     print("OZZY: Successfully to authenticated via Firebase email")
+                    if let user = user {
+                        self.complateSignIn(id: user.uid)
+                    }
                     
                 }
             })
@@ -71,9 +78,18 @@ class SignInVC: UIViewController {
                 print("OZZY: Unable to authenticate via Firebase - \(error.debugDescription)")
             }else{
                 print("OZZY: Successfully to authenticated via Firebase")
+                if let user = user {
+                    self.complateSignIn(id: user.uid)
+                }
             }
         })
         
+    }
+    
+    func complateSignIn(id: String ) {
+        KeychainWrapper.standard.set(id, forKey: KEY_UID)
+        print("Ozzy: Key chain data saved")
+        performSegue(withIdentifier: "goToFeed", sender: nil)
     }
 }
 
