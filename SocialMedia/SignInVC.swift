@@ -46,6 +46,7 @@ class SignInVC: UIViewController {
     
     @IBAction func signInTapped(_ sender: Any) {
         
+        
         if let email = emailField.text, let pwd = passwordField.text {
             FIRAuth.auth()?.signIn(withEmail: email, password: pwd, completion: { (user, error) in
                 if error != nil{
@@ -55,14 +56,16 @@ class SignInVC: UIViewController {
                         }else{
                             print("OZZY: Successfully created authenticated user via Firebase email")
                             if let user = user {
-                                self.complateSignIn(id: user.uid)
+                                let userData = ["privider": user.providerID]
+                                self.complateSignIn(id: user.uid, userData: userData)
                             }
                         }
                     })
                 }else{
                     print("OZZY: Successfully to authenticated via Firebase email")
                     if let user = user {
-                        self.complateSignIn(id: user.uid)
+                        let userData = ["privider": user.providerID]
+                        self.complateSignIn(id: user.uid, userData: userData)
                     }
                     
                 }
@@ -79,14 +82,16 @@ class SignInVC: UIViewController {
             }else{
                 print("OZZY: Successfully to authenticated via Firebase")
                 if let user = user {
-                    self.complateSignIn(id: user.uid)
+                    let userData = ["privider": credential.provider]
+                    self.complateSignIn(id: user.uid, userData: userData)
                 }
             }
         })
         
     }
     
-    func complateSignIn(id: String ) {
+    func complateSignIn(id: String, userData:Dictionary<String, String> ) {
+        DataService.ds.createFirebaseDBUser(uid: id, userData: userData)
         KeychainWrapper.standard.set(id, forKey: KEY_UID)
         print("Ozzy: Key chain data saved")
         performSegue(withIdentifier: "goToFeed", sender: nil)
